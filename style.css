@@ -24,7 +24,6 @@ body{
   border: none;
   height: 50px;
   outline: none;
-  text-transform: uppercase;
   background-color: snow;
   position: relative;
 }
@@ -38,4 +37,15 @@ body{
   position: relative;
   border-radius: 0px 5px 5px 0px;
   height: 50px;
+}
+.autoCompleteBox{
+  width: 100%;
+  height: auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+.autoCompleteBox p{
+  border: 1px solid rgb(254, 183, 195);
+  padding: 5px;
+  background-color: snow;
+  cursor: pointer;
 }
