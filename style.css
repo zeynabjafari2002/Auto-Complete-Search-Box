@@ -6,7 +6,7 @@
 body{
   font-family: 'Courier New', Courier, monospace;
   background-image: linear-gradient(160deg , rgb(254, 183, 195) 30% , rgb(113, 44, 100));
-  height: 81vh;
+  height:  81vh;
 }
 .wrapper{
   width: 40%;
@@ -40,7 +40,7 @@ body{
 }
 .autoCompleteBox{
   width: 100%;
-  height: auto;
+  height: 300px;
   font-family: 'Courier New', Courier, monospace;
 }
 .autoCompleteBox p{

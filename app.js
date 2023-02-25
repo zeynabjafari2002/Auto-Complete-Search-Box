@@ -54,36 +54,51 @@ const suggestion=[
 let result
 let userFragment=$.createDocumentFragment()
 let autoCompleteBox=$.querySelector('.autoCompleteBox')
-
 let inputBox=$.querySelector('input')
-let inputValue=inputBox.value
+let listItemsArray
+let suggestedList
 
-inputBox.addEventListener('keyup' , ()=>{
-  result=suggestion.filter(
-    function (words){
-      return words.includes(inputBox.value)
-    }
-  )
+function suggestionWordsGenerator(wordsArray){
 
-  result.forEach(
+  listItemsArray=wordsArray.map(
     function (item){
       autoCompleteBox.innerHTML=''
-      let suggestedList=$.createElement('p')
+      suggestedList=$.createElement('p')
       suggestedList.innerHTML=item
       userFragment.append(suggestedList)
-
+  
       settingOnclick(suggestedList)
     }
   )
+
+  if(!listItemsArray.length){
+    suggestedList.innerHTML=inputBox.value
+  }
+
   autoCompleteBox.append(userFragment)
+}
+
+inputBox.addEventListener('keyup' , ()=>{
+
+  let inputValue=inputBox.value
+  if(inputValue){
+    autoCompleteBox.removeAttribute('style' , 'display:none')
+    result=suggestion.filter(
+      function (word){
+        return word.toLowerCase().startsWith(inputValue.toLowerCase())
+      }
+    )
+    suggestionWordsGenerator(result)
+  }
+  else{
+    autoCompleteBox.setAttribute('style' , 'display:none')
+  }
 })
 
 function settingOnclick(wordElement){
+  
   wordElement.addEventListener('click' , ()=>{
     inputBox.value=wordElement.innerHTML
+    autoCompleteBox.setAttribute('style' , 'display:none')
   })
 }
-
-
-
-
